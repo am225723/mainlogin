@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
 import './App.css'
 
@@ -9,6 +9,11 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -24,11 +29,8 @@ function App() {
 
       if (error) throw error
 
-      setSuccess('Login successful! Welcome back.')
+      setSuccess('Login successful! Welcome back to your wellness journey.')
       console.log('User logged in:', data)
-      
-      // Here you would typically redirect to your app's main page
-      // For demo purposes, we'll just show a success message
       
     } catch (error) {
       setError(error.message || 'An error occurred during login')
@@ -63,31 +65,65 @@ function App() {
   }
 
   const handleSignUp = () => {
-    // This would typically navigate to a sign-up page
-    // For demo purposes, we'll show an alert
     alert('Sign up functionality would redirect to registration page')
   }
 
   return (
     <div className="app-container">
-      {/* Animated brain background */}
+      {/* Advanced animated mesh background */}
+      <div className="mesh-background">
+        <div className="mesh-gradient"></div>
+      </div>
+
+      {/* Premium particle system */}
+      <div className="particle-container">
+        <div className="particle particle-1"></div>
+        <div className="particle particle-2"></div>
+        <div className="particle particle-3"></div>
+        <div className="particle particle-4"></div>
+        <div className="particle particle-5"></div>
+      </div>
+
+      {/* Enhanced brain background */}
       <div className="brain-background">
         <img src="/brain.jpg" alt="Brain network" />
       </div>
 
-      {/* Electric spark overlay */}
-      <div className="spark-overlay">
-        <div className="spark"></div>
-        <div className="spark"></div>
-        <div className="spark"></div>
-        <div className="spark"></div>
-        <div className="spark"></div>
-        <div className="spark"></div>
+      {/* Premium electric spark network */}
+      <div className="spark-network">
+        <div className="neural-node" style={{ top: '20%', left: '15%' }}></div>
+        <div className="neural-node" style={{ top: '40%', left: '80%' }}></div>
+        <div className="neural-node" style={{ top: '60%', left: '25%' }}></div>
+        <div className="neural-node" style={{ top: '75%', left: '70%' }}></div>
+        <div className="neural-node" style={{ top: '30%', left: '50%' }}></div>
+        <div className="neural-node" style={{ top: '85%', left: '40%' }}></div>
+        
+        <div className="neural-connection" style={{ 
+          top: '20%', 
+          left: '15%', 
+          width: '65%', 
+          transform: 'rotate(15deg)',
+          animationDelay: '0.5s'
+        }}></div>
+        <div className="neural-connection" style={{ 
+          top: '40%', 
+          left: '25%', 
+          width: '55%', 
+          transform: 'rotate(-20deg)',
+          animationDelay: '1s'
+        }}></div>
+        <div className="neural-connection" style={{ 
+          top: '60%', 
+          left: '25%', 
+          width: '45%', 
+          transform: 'rotate(30deg)',
+          animationDelay: '1.5s'
+        }}></div>
       </div>
 
-      {/* Login card */}
+      {/* Premium login card */}
       <div className="login-card">
-        {/* Logo section */}
+        {/* Enhanced logo section */}
         <div className="logo-section">
           <div className="logo-container">
             <img src="/ip-logo.png" alt="Integrative Psychiatry" />
@@ -97,31 +133,33 @@ function App() {
           </div>
         </div>
 
-        {/* Welcome text */}
+        {/* Enhanced welcome text */}
         <div className="welcome-text">
           <h1>Welcome Back</h1>
-          <p>Sign in to continue your wellness journey</p>
+          <p>Continue your journey to mental wellness and inner peace</p>
         </div>
 
-        {/* Error message */}
+        {/* Premium error message */}
         {error && <div className="error-message">{error}</div>}
 
-        {/* Success message */}
+        {/* Premium success message */}
         {success && <div className="success-message">{success}</div>}
 
-        {/* Login form */}
+        {/* Enhanced login form */}
         <form className="login-form" onSubmit={handleLogin}>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={loading}
-            />
+            <div className="input-wrapper">
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={loading}
+              />
+            </div>
           </div>
 
           <div className="form-group">
@@ -160,9 +198,9 @@ function App() {
           </button>
         </form>
 
-        {/* Sign up section */}
+        {/* Enhanced signup section */}
         <div className="signup-section">
-          <p>Don't have an account?</p>
+          <p>New to your wellness journey?</p>
           <a href="#" onClick={(e) => { e.preventDefault(); handleSignUp(); }}>
             Create Account →
           </a>
